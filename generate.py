@@ -45,6 +45,9 @@ CSS = """
   .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
   .product .mix { color: var(--muted); margin-top: 10px; font-size: 1rem; letter-spacing: .02em; }
   .product .price { color: var(--ink); font-weight: 700; margin-top: 8px; font-size: 1.1rem; }
+  .video { max-width: 560px; margin: 0 auto 48px; }
+  .video iframe { display: block; width: 100%; aspect-ratio: 16/9;
+    border: 1px solid var(--border); border-radius: var(--radius); background: #000; }
   .info { text-align: left; background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 24px; margin-bottom: 48px; }
   .info h2 { font-size: 1.15rem; margin-bottom: 12px; padding-left: 12px; border-left: 3px solid var(--accent); }
@@ -221,6 +224,11 @@ MIX_LINE = {
     "32k-fumot": "2 smaker i 1",
 }
 
+# YouTube-video per kategori (video-ID)
+VIDEOS = {
+    "80k-fumot-4in1": "lVCVdAnhfho",
+}
+
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
     if flavors is None:
         return '      <p>Info kommer snart…</p>\n'
@@ -288,6 +296,7 @@ for slug, name, img in CATS:
     count_word = COUNT_WORD.get(slug, "blandningar")
     coming = RED_BANNER.get(slug, "")
     mix = MIX_LINE.get(slug, "")
+    video = VIDEOS.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
       <img src="{img}" alt="{name}">
@@ -297,6 +306,7 @@ for slug, name, img in CATS:
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
       {'<p class="price">' + price + '</p>' if price else ''}
     </div>
+    {'<div class="video"><iframe src="https://www.youtube.com/embed/' + video + '" title="' + name + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>' if video else ''}
     <div class="info">
       <h2>Info & smaker</h2>
 {info_block(flavors, sold_out, count_word)}    </div>
