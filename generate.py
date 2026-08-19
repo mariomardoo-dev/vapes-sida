@@ -9,7 +9,7 @@ CATS = [
     ("randm-18k", "Randm 18k", "randm-18k.png"),
     ("10k-shisha-randm", "10k Shisha Randm", "10k-shisha-randm.png"),
     ("7k-fumot", "7k RandM", "7k-fumot.png"),
-    ("15k-fumot", "15k Fumot", "15k-fumot.png"),
+    ("15k-fumot", "15k RandM Fumot", "15k-fumot.png"),
     ("32k-fumot", "32k Fumot", "32k-fumot.png"),
 ]
 
@@ -77,36 +77,61 @@ SOLD_OUT_80K = {
     "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
 }
 
-# 7k RandM – "Cool Mint 2" = Cool Mint, 2 st i lager
+# 7k RandM – smaker (siffror i källan ignorerade)
 FLAVORS_7K = [
-    "Cool Mint · 2 st",
-    "Blueberry On Ice · 2 st",
-    "Mango On Ice · 2 st",
-    "Peach Ice · 4 st",
-    "Cotton Candy · 2 st",
-    "Strawberry Banana · 2 st",
-    "Strawberry Kiwi · 3 st",
-    "Peach Mango · 3 st",
-    "Blackcurrant Ice · 2 st",
-    "Blueberry Raspberry · 2 st",
+    "Cool Mint",
+    "Blueberry On Ice",
+    "Mango On Ice",
+    "Peach Ice",
+    "Cotton Candy",
+    "Strawberry Banana",
+    "Strawberry Kiwi",
+    "Peach Mango",
+    "Blackcurrant Ice",
+    "Blueberry Raspberry",
 ]
 SOLD_OUT_7K = set()
+
+# 15k RandM Fumot – smaker (siffror i källan ignorerade)
+FLAVORS_15K = [
+    "Blue Razz Lemonade",
+    "Peach Ice",
+    "Watermelon Ice",
+    "Blueberry On Ice",
+    "Strawberry Ice",
+    "Cola Ice",
+    "Strawberry Watermelon",
+    "Peach Mango",
+    "Strawberry Kiwi",
+    "Blueberry Bubblegum",
+    "Bluesour Raspberry",
+    "Cherry Cola",
+    "Lemon & Lime",
+    "Red Energy Ice",
+    "Strawberry Banana",
+    "Fresh Menthol Mojito",
+    "Cactus Kiwi",
+]
+SOLD_OUT_15K = set()
 
 # Underrubrik (t.ex. nikotinstyrka) per kategori
 SUBTITLES = {
     "80k-fumot-4in1": "5% Nikotin",
     "7k-fumot": "5% Nikotin",
+    "15k-fumot": "5% Nikotin",
 }
 
 # Pris per kategori
 PRICES = {
     "7k-fumot": "Pris: 200kr",
+    "15k-fumot": "Pris: 280kr Styck",
 }
 
 # Ord för antal i smak-rubriken
 COUNT_WORD = {
     "80k-fumot-4in1": "blandningar",
     "7k-fumot": "st",
+    "15k-fumot": "st",
 }
 
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
@@ -163,8 +188,8 @@ with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
     f.write(page_template("Vapes – Smaker & Info", index_body))
 
 # --- Kategorisidor ---
-FLAVORS = {"80k-fumot-4in1": FLAVORS_80K, "7k-fumot": FLAVORS_7K}
-SOLD_OUT = {"80k-fumot-4in1": SOLD_OUT_80K, "7k-fumot": SOLD_OUT_7K}
+FLAVORS = {"80k-fumot-4in1": FLAVORS_80K, "7k-fumot": FLAVORS_7K, "15k-fumot": FLAVORS_15K}
+SOLD_OUT = {"80k-fumot-4in1": SOLD_OUT_80K, "7k-fumot": SOLD_OUT_7K, "15k-fumot": SOLD_OUT_15K}
 
 for slug, name, img in CATS:
     flavors = FLAVORS.get(slug)
