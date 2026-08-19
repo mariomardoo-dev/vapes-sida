@@ -40,6 +40,8 @@ CSS = """
   .product img { max-width: 100%; max-height: 420px; object-fit: contain; background: #fff;
     border-radius: var(--radius); padding: 16px; border: 1px solid var(--border); }
   .product h1 { margin-top: 20px; }
+  .product .coming-soon { color: #ef4444; font-weight: 700; font-size: 2em;
+    letter-spacing: .02em; margin-top: 16px; text-transform: uppercase; }
   .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
   .product .price { color: var(--ink); font-weight: 700; margin-top: 8px; font-size: 1.1rem; }
   .info { text-align: left; background: var(--surface); border: 1px solid var(--border);
@@ -179,6 +181,11 @@ COUNT_WORD = {
     "randm-18k": "st",
 }
 
+# Kategorier som visas med "KOMMER SNART" ovanför rubriken
+COMING_SOON = {
+    "80k-fumot-4in1": "KOMMER SNART",
+}
+
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
     if flavors is None:
         return '      <p>Info kommer snart…</p>\n'
@@ -244,8 +251,10 @@ for slug, name, img in CATS:
     subtitle = SUBTITLES.get(slug, "")
     price = PRICES.get(slug, "")
     count_word = COUNT_WORD.get(slug, "blandningar")
+    coming = COMING_SOON.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
+      {'<p class="coming-soon">' + coming + '</p>' if coming else ''}
       <img src="{img}" alt="{name}">
       <h1>{name}</h1>
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
