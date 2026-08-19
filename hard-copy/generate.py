@@ -5,7 +5,7 @@ import os
 BASE = os.path.dirname(os.path.abspath(__file__))
 
 CATS = [
-    ("80k-fumot-4in1", "80k Fumot 4in1 RandM", "80k-fumot-4in1.png"),
+    ("80k-fumot-4in1", "80k Fumot 4in1", "80k-fumot-4in1.png"),
     ("randm-18k", "Randm 18k", "randm-18k.png"),
     ("10k-shisha-randm", "10k Shisha Randm", "10k-shisha-randm.png"),
     ("7k-fumot", "7k Fumot", "7k-fumot.png"),
@@ -54,6 +54,7 @@ CSS = """
 """
 
 FLAVORS_80K = [
+    "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
     "Peach Ice · Mixed Berries · Lemon Peach Passionfruit · Black Ice Dragonfruit Strawberry",
     "Strawberry Banana · Strawberry Kiwi · Strawberry Watermelon · Strawberry Ice",
     "Fresh Menthol Mojito · Pink Lemonade · Cool Mint · Mint Watermelon",
