@@ -40,6 +40,7 @@ CSS = """
   .product img { max-width: 100%; max-height: 420px; object-fit: contain; background: #fff;
     border-radius: var(--radius); padding: 16px; border: 1px solid var(--border); }
   .product h1 { margin-top: 20px; }
+  .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
   .info { text-align: left; background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 24px; margin-bottom: 48px; }
   .info h2 { font-size: 1.15rem; margin-bottom: 12px; padding-left: 12px; border-left: 3px solid var(--accent); }
@@ -73,6 +74,11 @@ FLAVORS_80K = [
 # Smaker som är SLUT (slutsålda) – visas överstrukna med rött
 SOLD_OUT_80K = {
     "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
+}
+
+# Underrubrik (t.ex. nikotinstyrka) per kategori
+SUBTITLES = {
+    "80k-fumot-4in1": "5% Nikotin",
 }
 
 def info_block(flavors=None, sold_out=()):
@@ -132,10 +138,12 @@ with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
 for slug, name, img in CATS:
     flavors = FLAVORS_80K if slug == "80k-fumot-4in1" else None
     sold_out = SOLD_OUT_80K if slug == "80k-fumot-4in1" else ()
+    subtitle = SUBTITLES.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
       <img src="{img}" alt="{name}">
       <h1>{name}</h1>
+      {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
     </div>
     <div class="info">
       <h2>Info & smaker</h2>
