@@ -227,6 +227,9 @@ MIX_LINE = {
 # Lokal video per kategori (filnamn i repot)
 VIDEOS = {
     "80k-fumot-4in1": "80k-video.mp4",
+    "15k-fumot": "15k-video.mp4",
+    "randm-18k": "18k-video.mp4",
+    "10k-shisha-randm": "shisha-video.mp4",
 }
 
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
