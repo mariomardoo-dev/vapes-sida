@@ -192,7 +192,7 @@ SUBTITLES = {
 # Pris per kategori
 PRICES = {
     "7k-fumot": "Pris: 200kr",
-    "15k-fumot": "Pris: 280kr Styck",
+    "15k-fumot": "Pris: 280kr",
     "10k-shisha-randm": "Pris: 1 för 200kr, 3 för 500kr",
     "randm-18k": "Pris: 250kr",
     "32k-fumot": "Pris: 300kr",
@@ -211,7 +211,7 @@ COUNT_WORD = {
 # Röd text ovanför rubriken (t.ex. "KOMMER SNART") per kategori
 RED_BANNER = {
     "80k-fumot-4in1": "KOMMER SNART",
-    "32k-fumot": "Dessa Monterar vi vid beställning",
+    "32k-fumot": "Dessa monterar vi vid beställning",
 }
 
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
