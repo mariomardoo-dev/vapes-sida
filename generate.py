@@ -48,12 +48,17 @@ CSS = """
   .info ul { list-style: none; margin: 0; padding: 0; }
   .info li { color: var(--muted); padding: 8px 12px; margin-bottom: 6px;
     background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+  .info li.soldout { border-color: #b91c1c; background: #1f1113; }
+  .info li.soldout s { color: #ef4444; text-decoration: line-through; text-decoration-color: #ef4444; }
+  .info li .slut { color: #ef4444; font-weight: 700; font-size: .75rem;
+    letter-spacing: .05em; text-transform: uppercase; }
   .age { color: var(--accent); font-weight: 600; }
   footer { border-top: 1px solid var(--border); padding: 28px 0 40px; text-align: center; color: var(--muted); font-size: .9rem; }
   @media (max-width: 480px) { header h1 { font-size: 1.7rem; } }
 """
 
 FLAVORS_80K = [
+    "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
     "Peach Ice · Mixed Berries · Lemon Peach Passionfruit · Black Ice Dragonfruit Strawberry",
     "Strawberry Banana · Strawberry Kiwi · Strawberry Watermelon · Strawberry Ice",
     "Fresh Menthol Mojito · Pink Lemonade · Cool Mint · Mint Watermelon",
@@ -65,10 +70,19 @@ FLAVORS_80K = [
     "Cola Lime · Cherry Cola · Dr Blue · Strawberry Grape",
 ]
 
-def info_block(flavors=None):
+# Smaker som är SLUT (slutsålda) – visas överstrukna med rött
+SOLD_OUT_80K = {
+    "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
+}
+
+def info_block(flavors=None, sold_out=()):
     if flavors is None:
         return '      <p>Info kommer snart…</p>\n'
-    items = "\n".join(f"      <li>{f}</li>" for f in flavors)
+    items = "\n".join(
+        f'      <li class="soldout"><s>{f}</s> <span class="slut">SLUT</span></li>'
+        if f in sold_out else f"      <li>{f}</li>"
+        for f in flavors
+    )
     return f"""      <p><strong>Smaker ({len(flavors)} blandningar):</strong></p>
       <ul>
 {items}
@@ -117,6 +131,7 @@ with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
 # --- Kategorisidor ---
 for slug, name, img in CATS:
     flavors = FLAVORS_80K if slug == "80k-fumot-4in1" else None
+    sold_out = SOLD_OUT_80K if slug == "80k-fumot-4in1" else ()
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
       <img src="{img}" alt="{name}">
@@ -124,7 +139,7 @@ for slug, name, img in CATS:
     </div>
     <div class="info">
       <h2>Info & smaker</h2>
-{info_block(flavors)}    </div>
+{info_block(flavors, sold_out)}    </div>
 """
     with open(os.path.join(BASE, slug + ".html"), "w", encoding="utf-8") as f:
         f.write(page_template(name + " – Vapes", body))
