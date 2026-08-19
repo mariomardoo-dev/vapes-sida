@@ -43,6 +43,7 @@ CSS = """
   .product .red-banner { color: #ef4444; font-weight: 700; font-size: 2em;
     letter-spacing: .02em; margin-top: 16px; }
   .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
+  .product .mix { color: var(--muted); margin-top: 10px; font-size: 1rem; letter-spacing: .02em; }
   .product .price { color: var(--ink); font-weight: 700; margin-top: 8px; font-size: 1.1rem; }
   .info { text-align: left; background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 24px; margin-bottom: 48px; }
@@ -214,6 +215,12 @@ RED_BANNER = {
     "32k-fumot": "Dessa monterar vi vid beställning",
 }
 
+# Smakinfo-rad mellan rubrik och nikotin (t.ex. "4 smaker in 1")
+MIX_LINE = {
+    "80k-fumot-4in1": "4 smaker in 1",
+    "32k-fumot": "2 smaker i 1",
+}
+
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
     if flavors is None:
         return '      <p>Info kommer snart…</p>\n'
@@ -280,11 +287,13 @@ for slug, name, img in CATS:
     price = PRICES.get(slug, "")
     count_word = COUNT_WORD.get(slug, "blandningar")
     coming = RED_BANNER.get(slug, "")
+    mix = MIX_LINE.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
       <img src="{img}" alt="{name}">
       {'<p class="red-banner">' + coming + '</p>' if coming else ''}
       <h1>{name}</h1>
+      {'<p class="mix">' + mix + '</p>' if mix else ''}
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
       {'<p class="price">' + price + '</p>' if price else ''}
     </div>
