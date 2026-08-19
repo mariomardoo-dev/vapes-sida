@@ -279,8 +279,8 @@ for slug, name, img in CATS:
     coming = COMING_SOON.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
-      {'<p class="coming-soon">' + coming + '</p>' if coming else ''}
       <img src="{img}" alt="{name}">
+      {'<p class="coming-soon">' + coming + '</p>' if coming else ''}
       <h1>{name}</h1>
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
       {'<p class="price">' + price + '</p>' if price else ''}
