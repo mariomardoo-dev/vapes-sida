@@ -10,7 +10,7 @@ CATS = [
     ("10k-shisha-randm", "10k Shisha RandM", "10k-shisha-randm.png"),
     ("7k-fumot", "7k RandM Fumot", "7k-fumot.png"),
     ("15k-fumot", "15k RandM Fumot", "15k-fumot.png"),
-    ("32k-fumot", "32k Fumot", "32k-fumot.png"),
+    ("32k-fumot", "32k Fumot RandM", "32k-fumot.png"),
 ]
 
 CSS = """
@@ -155,6 +155,30 @@ SOLD_OUT_18K = {
     "Cotton Candy",
 }
 
+# 32k Fumot RandM – blandningar (2 smaker per rad). Slut-blandningar visas överstrukna
+FLAVORS_32K = [
+    "Fizzy Lemon & Lime · Lemon & Blueberry",
+    "Grape Rainbow Drops · Strawberry Rainbow Drops",
+    "Blue Razz Ice · Blueberry Raspberry",
+    "Cool Mint · Spear Mint",
+    "Blackcurrant Lemonade · Cherry Cola",
+    "Grape Ice · Strawberry Ice",
+    "Blue Razz Lemonade · Pink Lemonade",
+    "Strawberry Grapefruit · Strawberry Dragonfruit",
+    "Blueberry Hubba Bubba · Watermelon Hubba Bubba",
+    "Watermelon Ice · Raspberry Watermelon",
+    "Peach Ice · Triple Mango",
+    "Lucid Dream · Rainbow Candy",
+    "Kiwi Passion Fruit Guava · Pineapple Ice",
+    "Dr Blue · Blueberry Sour Raspberry",
+    "Fruit Bomb · Strawberry Watermelon",
+    "Blueberry Cherry Cranberry · Cherry Ice",
+]
+SOLD_OUT_32K = {
+    "Cool Mint · Spear Mint",
+    "Peach Ice · Triple Mango",
+}
+
 # Underrubrik (t.ex. nikotinstyrka) per kategori
 SUBTITLES = {
     "80k-fumot-4in1": "5% Nikotin",
@@ -175,6 +199,7 @@ PRICES = {
 # Ord för antal i smak-rubriken
 COUNT_WORD = {
     "80k-fumot-4in1": "blandningar",
+    "32k-fumot": "blandningar",
     "7k-fumot": "st",
     "15k-fumot": "st",
     "10k-shisha-randm": "st",
@@ -241,9 +266,9 @@ with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
 
 # --- Kategorisidor ---
 FLAVORS = {"80k-fumot-4in1": FLAVORS_80K, "7k-fumot": FLAVORS_7K, "15k-fumot": FLAVORS_15K,
-           "10k-shisha-randm": FLAVORS_10K, "randm-18k": FLAVORS_18K}
+           "10k-shisha-randm": FLAVORS_10K, "randm-18k": FLAVORS_18K, "32k-fumot": FLAVORS_32K}
 SOLD_OUT = {"80k-fumot-4in1": SOLD_OUT_80K, "7k-fumot": SOLD_OUT_7K, "15k-fumot": SOLD_OUT_15K,
-            "10k-shisha-randm": SOLD_OUT_10K, "randm-18k": SOLD_OUT_18K}
+            "10k-shisha-randm": SOLD_OUT_10K, "randm-18k": SOLD_OUT_18K, "32k-fumot": SOLD_OUT_32K}
 
 for slug, name, img in CATS:
     flavors = FLAVORS.get(slug)
