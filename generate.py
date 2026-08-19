@@ -231,6 +231,7 @@ VIDEOS = {
     "randm-18k": "18k-video.mp4",
     "10k-shisha-randm": "shisha-video.mp4",
     "7k-fumot": "7k-video.mp4",
+    "32k-fumot": "32k-video.mp4",
 }
 
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
