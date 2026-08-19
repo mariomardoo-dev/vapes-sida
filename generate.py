@@ -8,7 +8,7 @@ CATS = [
     ("80k-fumot-4in1", "80k Fumot 4in1 RandM", "80k-fumot-4in1.png"),
     ("randm-18k", "Randm 18k", "randm-18k.png"),
     ("10k-shisha-randm", "10k Shisha Randm", "10k-shisha-randm.png"),
-    ("7k-fumot", "7k Fumot", "7k-fumot.png"),
+    ("7k-fumot", "7k RandM", "7k-fumot.png"),
     ("15k-fumot", "15k Fumot", "15k-fumot.png"),
     ("32k-fumot", "32k Fumot", "32k-fumot.png"),
 ]
@@ -41,6 +41,7 @@ CSS = """
     border-radius: var(--radius); padding: 16px; border: 1px solid var(--border); }
   .product h1 { margin-top: 20px; }
   .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
+  .product .price { color: var(--ink); font-weight: 700; margin-top: 8px; font-size: 1.1rem; }
   .info { text-align: left; background: var(--surface); border: 1px solid var(--border);
     border-radius: var(--radius); padding: 24px; margin-bottom: 48px; }
   .info h2 { font-size: 1.15rem; margin-bottom: 12px; padding-left: 12px; border-left: 3px solid var(--accent); }
@@ -76,12 +77,39 @@ SOLD_OUT_80K = {
     "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
 }
 
+# 7k RandM – "Cool Mint 2" = Cool Mint, 2 st i lager
+FLAVORS_7K = [
+    "Cool Mint · 2 st",
+    "Blueberry On Ice · 2 st",
+    "Mango On Ice · 2 st",
+    "Peach Ice · 4 st",
+    "Cotton Candy · 2 st",
+    "Strawberry Banana · 2 st",
+    "Strawberry Kiwi · 3 st",
+    "Peach Mango · 3 st",
+    "Blackcurrant Ice · 2 st",
+    "Blueberry Raspberry · 2 st",
+]
+SOLD_OUT_7K = set()
+
 # Underrubrik (t.ex. nikotinstyrka) per kategori
 SUBTITLES = {
     "80k-fumot-4in1": "5% Nikotin",
+    "7k-fumot": "5% Nikotin",
 }
 
-def info_block(flavors=None, sold_out=()):
+# Pris per kategori
+PRICES = {
+    "7k-fumot": "Pris: 200kr",
+}
+
+# Ord för antal i smak-rubriken
+COUNT_WORD = {
+    "80k-fumot-4in1": "blandningar",
+    "7k-fumot": "st",
+}
+
+def info_block(flavors=None, sold_out=(), count_word="blandningar"):
     if flavors is None:
         return '      <p>Info kommer snart…</p>\n'
     items = "\n".join(
@@ -89,7 +117,7 @@ def info_block(flavors=None, sold_out=()):
         if f in sold_out else f"      <li>{f}</li>"
         for f in flavors
     )
-    return f"""      <p><strong>Smaker ({len(flavors)} blandningar):</strong></p>
+    return f"""      <p><strong>Smaker ({len(flavors)} {count_word}):</strong></p>
       <ul>
 {items}
       </ul>
@@ -135,19 +163,25 @@ with open(os.path.join(BASE, "index.html"), "w", encoding="utf-8") as f:
     f.write(page_template("Vapes – Smaker & Info", index_body))
 
 # --- Kategorisidor ---
+FLAVORS = {"80k-fumot-4in1": FLAVORS_80K, "7k-fumot": FLAVORS_7K}
+SOLD_OUT = {"80k-fumot-4in1": SOLD_OUT_80K, "7k-fumot": SOLD_OUT_7K}
+
 for slug, name, img in CATS:
-    flavors = FLAVORS_80K if slug == "80k-fumot-4in1" else None
-    sold_out = SOLD_OUT_80K if slug == "80k-fumot-4in1" else ()
+    flavors = FLAVORS.get(slug)
+    sold_out = SOLD_OUT.get(slug, ())
     subtitle = SUBTITLES.get(slug, "")
+    price = PRICES.get(slug, "")
+    count_word = COUNT_WORD.get(slug, "blandningar")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
       <img src="{img}" alt="{name}">
       <h1>{name}</h1>
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
+      {'<p class="price">' + price + '</p>' if price else ''}
     </div>
     <div class="info">
       <h2>Info & smaker</h2>
-{info_block(flavors, sold_out)}    </div>
+{info_block(flavors, sold_out, count_word)}    </div>
 """
     with open(os.path.join(BASE, slug + ".html"), "w", encoding="utf-8") as f:
         f.write(page_template(name + " – Vapes", body))
