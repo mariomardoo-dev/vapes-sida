@@ -40,8 +40,8 @@ CSS = """
   .product img { max-width: 100%; max-height: 420px; object-fit: contain; background: #fff;
     border-radius: var(--radius); padding: 16px; border: 1px solid var(--border); }
   .product h1 { margin-top: 20px; }
-  .product .coming-soon { color: #ef4444; font-weight: 700; font-size: 2em;
-    letter-spacing: .02em; margin-top: 16px; text-transform: uppercase; }
+  .product .red-banner { color: #ef4444; font-weight: 700; font-size: 2em;
+    letter-spacing: .02em; margin-top: 16px; }
   .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
   .product .price { color: var(--ink); font-weight: 700; margin-top: 8px; font-size: 1.1rem; }
   .info { text-align: left; background: var(--surface); border: 1px solid var(--border);
@@ -186,6 +186,7 @@ SUBTITLES = {
     "15k-fumot": "5% Nikotin",
     "10k-shisha-randm": "0.8% Nikotin",
     "randm-18k": "2% Nikotin",
+    "32k-fumot": "2% Nikotin",
 }
 
 # Pris per kategori
@@ -194,6 +195,7 @@ PRICES = {
     "15k-fumot": "Pris: 280kr Styck",
     "10k-shisha-randm": "Pris: 1 för 200kr, 3 för 500kr",
     "randm-18k": "Pris: 250kr",
+    "32k-fumot": "Pris: 300kr",
 }
 
 # Ord för antal i smak-rubriken
@@ -206,9 +208,10 @@ COUNT_WORD = {
     "randm-18k": "st",
 }
 
-# Kategorier som visas med "KOMMER SNART" ovanför rubriken
-COMING_SOON = {
+# Röd text ovanför rubriken (t.ex. "KOMMER SNART") per kategori
+RED_BANNER = {
     "80k-fumot-4in1": "KOMMER SNART",
+    "32k-fumot": "Dessa Monterar vi vid beställning",
 }
 
 def info_block(flavors=None, sold_out=(), count_word="blandningar"):
@@ -276,11 +279,11 @@ for slug, name, img in CATS:
     subtitle = SUBTITLES.get(slug, "")
     price = PRICES.get(slug, "")
     count_word = COUNT_WORD.get(slug, "blandningar")
-    coming = COMING_SOON.get(slug, "")
+    coming = RED_BANNER.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
     <div class="product">
       <img src="{img}" alt="{name}">
-      {'<p class="coming-soon">' + coming + '</p>' if coming else ''}
+      {'<p class="red-banner">' + coming + '</p>' if coming else ''}
       <h1>{name}</h1>
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
       {'<p class="price">' + price + '</p>' if price else ''}
