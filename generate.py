@@ -45,6 +45,7 @@ CSS = """
   .product .subtitle { color: var(--accent); font-weight: 600; margin-top: 6px; letter-spacing: .03em; }
   .product .mix { color: var(--muted); margin-top: 10px; font-size: 1rem; letter-spacing: .02em; }
   .product .price { color: var(--ink); font-weight: 700; margin-top: 8px; font-size: 1.1rem; }
+  .product .deal { color: #ef4444; font-weight: 700; margin-top: 12px; font-size: 1.4rem; letter-spacing: .02em; }
   .video { max-width: 560px; margin: 0 auto 48px; }
   .video video { display: block; width: 100%; aspect-ratio: 16/9;
     border: 1px solid var(--border); border-radius: var(--radius); background: #000; }
@@ -130,6 +131,7 @@ FLAVORS_10K = [
     "Watermelone Ice",
 ]
 SOLD_OUT_10K = {
+    "Strawberry Punch",
     "Peach Ice",
     "Love 66",
     "Watermelone Ice",
@@ -195,6 +197,7 @@ SUBTITLES = {
 
 # Pris per kategori
 PRICES = {
+    "80k-fumot-4in1": "Pris: 1 för 250kr, 2 för 400kr",
     "7k-fumot": "Pris: 200kr",
     "15k-fumot": "Pris: 280kr",
     "10k-shisha-randm": "Pris: 1 för 200kr, 3 för 500kr",
@@ -210,6 +213,11 @@ COUNT_WORD = {
     "15k-fumot": "st",
     "10k-shisha-randm": "st",
     "randm-18k": "st",
+}
+
+# Röd rubrik direkt ovanför priset (erbjudande) per kategori
+DEAL_HEADING = {
+    "80k-fumot-4in1": "Erbjudande",
 }
 
 # Röd text ovanför rubriken (t.ex. "KOMMER SNART") per kategori
@@ -300,6 +308,7 @@ for slug, name, img in CATS:
     price = PRICES.get(slug, "")
     count_word = COUNT_WORD.get(slug, "blandningar")
     coming = RED_BANNER.get(slug, "")
+    deal = DEAL_HEADING.get(slug, "")
     mix = MIX_LINE.get(slug, "")
     video = VIDEOS.get(slug, "")
     body = f"""    <a class="back" href="index.html">&larr; Tillbaka till alla</a>
@@ -309,6 +318,7 @@ for slug, name, img in CATS:
       <h1>{name}</h1>
       {'<p class="mix">' + mix + '</p>' if mix else ''}
       {'<p class="subtitle">' + subtitle + '</p>' if subtitle else ''}
+      {'<p class="deal">' + deal + '</p>' if deal else ''}
       {'<p class="price">' + price + '</p>' if price else ''}
     </div>
     {'<div class="video"><video controls preload="metadata" playsinline src="' + video + '"></video></div>' if video else ''}
