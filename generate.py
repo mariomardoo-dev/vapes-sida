@@ -222,7 +222,6 @@ DEAL_HEADING = {
 
 # Röd text ovanför rubriken (t.ex. "KOMMER SNART") per kategori
 RED_BANNER = {
-    "80k-fumot-4in1": "KOMMER SNART",
     "32k-fumot": "Dessa monterar vi vid beställning",
 }
 
