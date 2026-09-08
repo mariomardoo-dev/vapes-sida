@@ -199,7 +199,7 @@ SUBTITLES = {
 PRICES = {
     "80k-fumot-4in1": "Pris: 1 för 250kr, 2 för 400kr",
     "7k-fumot": "Pris: 200kr",
-    "15k-fumot": "Pris: 280kr",
+    "15k-fumot": "Pris: 250 kr",
     "10k-shisha-randm": "Pris: 1 för 200kr, 3 för 500kr",
     "randm-18k": "Pris: 250kr",
     "32k-fumot": "Pris: 300kr",
