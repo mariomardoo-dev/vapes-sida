@@ -23,9 +23,6 @@ CSS = """
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     line-height: 1.6; -webkit-font-smoothing: antialiased; }
   .wrap { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
-  .hjarta { text-align: center; font-size: 170px; line-height: 1; margin-top: 40px;
-    animation: hjartslag 1.6s ease-in-out infinite; }
-  @keyframes hjartslag { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
   header { padding: 56px 0 32px; text-align: center; }
   header h1 { font-size: 2.2rem; letter-spacing: -0.02em; }
   header p { color: var(--muted); margin-top: 8px; }
@@ -283,8 +280,7 @@ cards = "\n".join(
     f'    </a>'
     for slug, name, img in CATS
 )
-index_body = f"""    <div class="hjarta">&#10084;&#65039;</div>
-    <header>
+index_body = f"""    <header>
       <h1>Vapes</h1>
       <p>Välj en vape för info & smaker</p>
     </header>
