@@ -117,7 +117,9 @@ FLAVORS_15K = [
     "Fresh Menthol Mojito",
     "Cactus Kiwi",
 ]
-SOLD_OUT_15K = set()
+SOLD_OUT_15K = {
+    "Strawberry Banana",
+}
 
 # 10k Shisha RandM – smaker. Slut-smaker visas överstrukna
 FLAVORS_10K = [
@@ -131,10 +133,10 @@ FLAVORS_10K = [
     "Watermelone Ice",
 ]
 SOLD_OUT_10K = {
-    "Strawberry Punch",
     "Peach Ice",
     "Love 66",
     "Watermelone Ice",
+    "Gum Flavour",
 }
 
 # 18k RandM – smaker. Slut-smaker visas överstrukna
