@@ -133,6 +133,7 @@ FLAVORS_10K = [
     "Watermelone Ice",
 ]
 SOLD_OUT_10K = {
+    "Strawberry Punch",
     "Peach Ice",
     "Love 66",
     "Watermelone Ice",
