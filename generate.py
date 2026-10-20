@@ -80,7 +80,9 @@ FLAVORS_80K = [
 ]
 
 # Smaker som är SLUT (slutsålda) – visas överstrukna med rött
-SOLD_OUT_80K = set()  # Magic Love var bara ett test – ingen slut längre
+SOLD_OUT_80K = {
+    "Cola Lime · Cherry Cola · Dr Blue · Strawberry Grape",
+}
 
 # 7k RandM – smaker (siffror i källan ignorerade)
 FLAVORS_7K = [
