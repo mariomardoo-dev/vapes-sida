@@ -81,6 +81,8 @@ FLAVORS_80K = [
 
 # Smaker som är SLUT (slutsålda) – visas överstrukna med rött
 SOLD_OUT_80K = {
+    "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
+    "Watermelon Ice · Peach Mango · Lady Killer · Strawberry Red Bull",
     "Cola Lime · Cherry Cola · Dr Blue · Strawberry Grape",
 }
 
