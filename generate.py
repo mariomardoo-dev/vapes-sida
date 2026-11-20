@@ -83,6 +83,7 @@ FLAVORS_80K = [
 SOLD_OUT_80K = {
     "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
     "Watermelon Ice · Peach Mango · Lady Killer · Strawberry Red Bull",
+    "Grape Gummy Bear · Blueberry Hubba Bubba · Watermelon Bubblegum · Skittles",
     "Cola Lime · Cherry Cola · Dr Blue · Strawberry Grape",
 }
 
