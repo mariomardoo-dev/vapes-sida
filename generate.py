@@ -82,8 +82,10 @@ FLAVORS_80K = [
 # Smaker som är SLUT (slutsålda) – visas överstrukna med rött
 SOLD_OUT_80K = {
     "Magic Love · Kiwi Passion Fruit Guava · Dragonfruit Raspberry · Lemon Lime",
+    "Strawberry Banana · Strawberry Kiwi · Strawberry Watermelon · Strawberry Ice",
     "Watermelon Ice · Peach Mango · Lady Killer · Strawberry Red Bull",
     "Grape Burst · Blueberry Sour Raspberry · Strawberry Raspberry Cherry Ice · Cherry Ice",
+    "Blueberry On Ice · Pineapple Lemonade · Peach Mango Watermelon · Blue Razz Cherry",
     "Grape Gummy Bear · Blueberry Hubba Bubba · Watermelon Bubblegum · Skittles",
     "Cola Lime · Cherry Cola · Dr Blue · Strawberry Grape",
 }
@@ -208,7 +210,7 @@ SUBTITLES = {
 PRICES = {
     "80k-fumot-4in1": "Pris: 1 för 250kr, 2 för 400kr",
     "7k-fumot": "Pris: 200kr",
-    "15k-fumot": "Pris: 250 kr",
+    "15k-fumot": "Pris: 280 kr",
     "10k-shisha-randm": "Pris: 1 för 200kr, 3 för 500kr",
     "randm-18k": "Pris: 250kr",
     "32k-fumot": "Pris: 300kr",
